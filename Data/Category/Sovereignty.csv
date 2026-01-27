@@ -1,0 +1,194 @@
+Rank,Country,Date
+1,  Chine,-221
+2,  Saint-Marin,3 septembre 301[notes 2]
+3,  France,481
+4,  Croatie,688
+5,  Maroc,789
+6,  Allemagne,01/08/0843
+7,  Danemark,958
+8,  Pologne,966
+9,  Turquie,1037
+10,  Éthiopie,1135
+11,  Portugal,26/07/1139
+12,  Albanie,1190
+13,  Suisse,1er août 1291
+14,  Espagne,1479
+15,  Russie,1480
+16,  Iran,1501
+17,  Suède,06/06/1523
+18,  Japon,1592
+19,  Pays-Bas,30/01/1648
+20,  Royaume-Uni,1er mai 1707
+21,  Afghanistan,1709
+22,  Oman,1744
+23,  Népal,21/12/1768
+24,  États-Unis,04/07/1776
+25,  Haïti,1er janvier 1804
+26,  Paraguay,14/05/1811
+27,  Liechtenstein,09/10/1813
+28,  Mexique,06/11/1813
+29,  Andorre,10/03/1814
+30,  Argentine,09/07/1816
+31,  Madagascar,27/10/1817
+32,  Colombie,07/08/1819
+33,  Pérou,09/12/1824
+34,  Bolivie,06/08/1825
+35,  Brésil,29/08/1825
+36,  Uruguay,27/08/1828
+37,  Venezuela,13/01/1830
+38,  Équateur,13/05/1830
+39,  Belgique,04/10/1830
+40,  Grèce,04/03/1832
+41,  Honduras,26/10/1838
+42,  Nicaragua,05/11/1838
+43,  Costa Rica,15/11/1838
+44,  Guatemala,17/04/1839
+45,  Salvador,02/02/1841
+46,  Chili,25/04/1844
+47,  Liberia,26/07/1847
+48,  Italie,17/03/1861
+49,  Monaco,02/12/1861
+50,  République dominicaine,03/03/1865
+51,  Canada,1er juillet 1867
+52,  Roumanie,13/07/1878
+53,  Luxembourg,23/11/1890
+54,  Cuba,10/12/1898
+55,  Australie,1er janvier 1901
+56,  Panama,03/11/1903
+57,  Norvège,07/06/1905
+58,  Nouvelle-Zélande,26/09/1907
+59,  Bulgarie,05/10/1908
+60,  Afrique du Sud,31/05/1910
+61,  Mongolie,29/12/1911
+62,  Irlande,24/04/1916
+63,  Finlande,03/01/1918
+64,  Hongrie,31/10/1918
+65,  Islande,1er décembre 1918
+66,  Arabie saoudite,20/05/1927
+67,  Irak,03/10/1932
+68,  Liban,22/11/1943
+69,  Jordanie,25/05/1946
+70,  Philippines,04/07/1946
+71,  Pakistan,14/08/1947
+72,  Inde,15/08/1947
+73,  Birmanie,04/01/1948
+74,  Sri Lanka,04/02/1948
+75,  Israël,14/05/1948
+76,  Corée du Sud,15/08/1948
+77,  Corée du Nord,09/09/1948
+78,  Laos,19/07/1949
+79,  Bhoutan,08/08/1949
+80,  Indonésie,27/12/1949
+81,  Libye,24/12/1951
+82,  Cambodge,09/11/1953
+83,  Autriche,15/05/1955
+84,  Soudan,1er janvier 1956
+85,  Tunisie,20/03/1956
+86,  Ghana,06/03/1957
+87,  Malaisie,31/08/1957
+88,  Guinée,02/10/1958
+89,  Togo,27/04/1960
+90,  République démocratique du Congo,30/06/1960
+91,  Somalie,1er juillet 1960
+92,  Bénin,1er août 1960
+93,  Niger,03/08/1960
+94,  Burkina Faso,05/08/1960
+95,  Côte d'Ivoire,07/08/1960
+96,  Tchad,11/08/1960
+97,  République centrafricaine,13/08/1960
+98,  République du Congo,15/08/1960
+99,  Chypre,16/08/1960
+100,  Gabon,17/08/1960
+101,  Sénégal,20/08/1960
+102,  Mali,22/09/1960
+103,  Nigeria,1er octobre 1960
+104,  Cameroun,1er novembre 1960
+105,  Mauritanie,28/11/1960
+106,  Sierra Leone,27/04/1961
+107,  Koweït,19/06/1961
+108,  Égypte,28/09/1961
+109,  Syrie,28/09/1961
+110,  Tanzanie,09/12/1961
+111,  Samoa,1er juin 1962
+112,  Algérie,01/07/1962
+113,  Burundi,1er juillet 1962
+114,  Rwanda,1er juillet 1962
+115,  Jamaïque,06/08/1962
+116,  Trinité-et-Tobago,31/08/1962
+117,  Ouganda,09/10/1962
+118,  Kenya,12/12/1963
+119,  Malawi,06/07/1964
+120,  Malte,21/09/1964
+121,  Zambie,24/10/1964
+122,  Gambie,18/02/1965
+123,  Maldives,26/07/1965
+124,  Singapour,07/08/1965
+125,  Guyana,26/05/1966
+126,  Botswana,30/09/1966
+127,  Lesotho,04/10/1966
+128,  Barbade,30/11/1966
+129,  Nauru,31/01/1968
+130,  Maurice,12/03/1968
+131,  Eswatini,06/09/1968
+132,  Guinée équatoriale,12/10/1968
+133,  Tonga,04/07/1970
+134,  Fidji,10/10/1970
+135,  Bangladesh,26/03/1971
+136,  Bahreïn,15/08/1971
+137,  Qatar,03/09/1971
+138,  Émirats arabes unis,02/12/1971
+139,  Bahamas,10/07/1973
+140,  Grenade,07/02/1974
+141,  Guinée-Bissau,10/09/1974
+142,  Thaïlande,30/04/1975
+143,  Mozambique,24/06/1975
+144,  Cap-Vert,05/07/1975
+145,  Comores,06/07/1975
+146,  Sao Tomé-et-Principe,12/07/1975
+147,  Papouasie-Nouvelle-Guinée,16/09/1975
+148,  Angola,11/11/1975
+149,  Suriname,25/11/1975
+150,  Vietnam,02/07/1976
+151,  Seychelles,29/08/1976
+152,  Djibouti,27/06/1977
+153,  Îles Salomon,07/07/1978
+154,  Tuvalu,1er octobre 1978
+155,  Dominique,03/11/1978
+156,  Sainte-Lucie,22/02/1979
+157,  Kiribati,12/07/1979
+158,  Saint-Vincent-et-les-Grenadines,27/10/1979
+159,  Zimbabwe,18/04/1980
+160,  Vanuatu,30/07/1980
+161,  Belize,21/09/1981
+162,  Antigua-et-Barbuda,1er novembre 1981
+163,  Saint-Christophe-et-Niévès,19/09/1983
+164,  Brunei,1er janvier 1984
+165,  Lituanie,11/03/1990
+166,  Namibie,21/03/1990
+167,  Lettonie,04/05/1990
+168,  Yémen,22/05/1990
+169,  Îles Marshall,22/12/1990
+170,  États fédérés de Micronésie,22/12/1990
+171,  Géorgie,09/04/1991
+172,  Slovénie,25/06/1991
+173,  Estonie,20/08/1991
+174,  Ukraine,24/08/1991
+175,  Biélorussie,25/08/1991
+176,  Moldavie,27/08/1991
+177,  Kirghizistan,31/08/1991
+178,  Ouzbékistan,31/08/1991
+179,  Macédoine,08/09/1991
+180,  Tadjikistan,09/09/1991
+181,  Arménie,21/09/1991
+182,  Azerbaïdjan,18/10/1991
+183,  Turkménistan,27/10/1991
+184,  Kazakhstan,16/12/1991
+185,  Bosnie-Herzégovine,05/03/1992
+186,  République tchèque,1er janvier 1993
+187,  Slovaquie,1er janvier 1993
+188,  Érythrée,24/05/1993
+189,  Palaos,1er octobre 1994
+190,  Timor oriental,20/05/2002
+191,  Monténégro,03/06/2006
+192,  Serbie,08/06/2006
+193,  Soudan du Sud,09/07/2011

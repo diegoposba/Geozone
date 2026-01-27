@@ -1,0 +1,1 @@
+Ajouter: Sovereignty, Forest, Median age, Suicide rate (moyennement traité)

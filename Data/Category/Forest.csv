@@ -1,0 +1,192 @@
+Rank,Country,Superficie
+1,  Suriname,"90,2"
+2,  États fédérés de Micronésie,"89,74"
+3,  Seychelles,"89,45"
+4,  Tuvalu,"89,12"
+5,  Palaos,"87,15"
+6,  Gabon,85
+7,  Mozambique,78
+8,  Îles Salomon,"78,00 à 80,00"
+9,  Suède,"74,9"
+10,  Belize,"71,98"
+11,  Laos,"71,6"
+12,  Guyana,"70,26"
+13,  Finlande,69
+14,  Japon,67
+15,  Zimbabwe,"66,35"
+16,  Congo,"65,7"
+17,  Dominique,65
+18,  Bhoutan,"64,5"
+19,  Corée du Sud,64
+20,  Myanmar,"63,64"
+21,  Papouasie-Nouvelle-Guinée,"63,6"
+22,  Corée du Nord,"63,25"
+23,  Honduras,60
+24,  Slovénie,"59,8"
+25,  Malaisie,"59,5"
+26,  Guinée équatoriale,"58,18"
+27,  Guinée-Bissau,"57,36"
+28,  Panama,"56,93"
+29,  Brésil,"56,1"
+30,  Espagne,56
+31,  Bénin,"54,93"
+32,  Fidji,"54,72"
+33,  Timor oriental,"53,65"
+34,  Pérou,"53,49"
+35,  Bolivie,"53,47"
+36,  Colombie,"53,32"
+37,  Bosnie-Herzégovine,53
+38,  République démocratique du Congo,52
+39,  Venezuela,"51,68"
+40,  Cambodge,"51,56"
+41,  Bahamas,"51,45"
+42,  Guatemala,51
+43,  Estonie,51
+44,  Zambie,50
+45,  Brunei,"48,22"
+46,  Angola,"47,41"
+47,  Autriche,"47,2"
+48,  Indonésie,"46,46"
+49,  Paraguay,"45,42"
+50,  Russie,"45,4"
+51,  Monténégro,"45,26"
+52,  Cameroun,"44,68"
+53,  Lettonie,"44,6"
+54,  Sénégal,"44,09"
+55,  Trinité-et-Tobago,"44,07"
+56,  Croatie,44
+57,  Liechtenstein,"43,75"
+58,  Gambie,43
+59,  Équateur,42
+60,  Slovaquie,"40,8"
+61,  Géorgie,40
+62,  Costa Rica,40
+63,  Macédoine du Nord,40
+64,  Nicaragua,"39,8"
+65,  Biélorussie,"38,6"
+66,  Sierra Leone,"38,39"
+67,  Tanzanie,"37,22"
+68,  Viêt Nam,"37,14"
+69,  Samoa,37
+70,  France,"36,76"
+71,  Vanuatu,"36,67"
+72,  Centrafrique,"36,53"
+73,  Mexique,"36,5"
+74,  Portugal,"36,5"
+75,  Albanie,36
+76,  Italie,35
+77,  Andorre,"34,19"
+78,  Argentine,34
+79,  République tchèque,34
+80,  Luxembourg,"33,64"
+81,  Bulgarie,"32,69"
+82,  Saint-Vincent-et-les-Grenadines,"32,56"
+83,  Lituanie,"32,5"
+84,  Nouvelle-Zélande,"31,87"
+85,  Allemagne,"31,7"
+86,  Canada,"31,06"
+87,  États-Unis,"30,84"
+88,  Suisse,"30,8"
+89,  Jamaïque,"30,1"
+90,  Île Maurice,30
+91,  Sri Lanka,"29,46"
+92,  Thaïlande,29
+93,  Norvège,"28,99"
+94,  Pologne,"28,8"
+95,  Grèce,"28,43"
+96,  Liberia,"28,32"
+97,  Sao Tomé-et-Principe,"28,01"
+98,  Malawi,28
+99,  Sainte-Lucie,"27,6"
+100,  République dominicaine,"27,5"
+101,  Guinée,"27,35"
+102,  Roumanie,"26,72"
+103,  Népal,"26,5"
+104,  Turquie,"25,77"
+105,  Burkina Faso,"24,78"
+106,  Cuba,"24,47"
+107,  Philippines,"23,87"
+108,  Inde,"23,68"
+109,  Serbie,"23,63"
+110,  Soudan du Sud,23
+111,  Madagascar,"21,87"
+112,  Belgique,"21,64"
+113,  Chili,21
+114,  Antigua-et-Barbuda,21
+115,  Cap-Vert,"20,83"
+116,  Ouganda,"20,74"
+117,  Botswana,"20,53"
+118,  Hongrie,"19,9"
+119,  Saint-Christophe-et-Niévès,"19,16"
+120,  Australie,19
+121,  Chypre,"18,81"
+122,  Chine,"18,21"
+123,  Soudan,"17,62"
+124,  Ukraine,17
+125,  Salvador,"14,16"
+126,  Togo,14
+127,  Liban,"13,3"
+128,  Érythrée,"13,21"
+129,  Tunisie,"12,6"
+130,  Nigeria,12
+131,  Danemark,12
+132,  Rwanda,12
+133,  Royaume-Uni,"11,76"
+134,  Grenade,"11,63"
+135,  Somalie,"11,18"
+136,  Azerbaïdjan,"10,81"
+137,  Ghana,"10,2"
+138,  Mali,"10,14"
+139,  Arménie,10
+140,  Moldavie,"9,72"
+141,  Irlande,"9,52"
+142,  Côte d'Ivoire,"9,3"
+143,  Namibie,"9,29"
+144,  Tchad,"9,28"
+145,  Pays-Bas,"8,79"
+146,  Turkménistan,"8,46"
+147,  Niger,8
+148,  Maroc,8
+149,  Afrique du Sud,"7,31"
+150,  Israël,7
+151,  Iran,"6,72"
+152,  Mongolie,"6,55"
+153,  Bangladesh,"6,05"
+154,  Tonga,"5,35"
+155,  Pakistan,"5,31"
+156,  Barbade,"4,65"
+157,  Burundi,"4,5"
+158,  Ouzbékistan,"4,4"
+159,  Kirghizstan,"4,35"
+160,  Oman,"4,22"
+161,  Uruguay,4
+162,  Émirats arabes unis,"3,73"
+163,  Éthiopie,"3,56"
+164,  Maldives,"3,56"
+165,  Singapour,3
+166,  Tadjikistan,"2,87"
+167,  Syrie,"2,49"
+168,  Kiribati,"2,47"
+169,  Kenya,"2,27"
+170,  Comores,"2,24"
+171,  Kazakhstan,2
+172,  Irak,"1,88"
+173,  Algérie,"1,7"
+174,  Saint-Marin,"1,64"
+175,  Haïti,"1,5"
+176,  Arabie saoudite,"1,26"
+177,  Jordanie,1
+178,  Eswatini ,1
+179,  Islande,1
+180,  Malte,"0,95"
+181,  Yémen,"0,85"
+182,  Bahreïn,"0,67"
+183,  Koweït,"0,34"
+184,  Mauritanie,"0,26"
+185,  Lesotho,"0,26"
+186,  Djibouti,"0,26"
+187,  Afghanistan,"0,25"
+188,  Libye,"0,12"
+189,  Égypte,"0,07"
+190,  Qatar,"0,07"
+191,  Monaco,0
