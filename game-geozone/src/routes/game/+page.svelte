@@ -17,6 +17,7 @@
 	let score: number = 0;
 	let gameWon: boolean | null = null;
 	let loading: boolean = true;
+	let rerollsRemaining: number = 3;
 
 	// Drag & Drop
 	let draggedOverCategory: string | null = null;
@@ -108,6 +109,7 @@
 		currentStep = 0;
 		score = 0;
 		gameWon = null;
+		rerollsRemaining = 3;
 		draggedOverCategory = null;
 		pendingCategory = null;
 		pickNewCountry();
@@ -130,6 +132,17 @@
 	function handleCategoryClick(category: string) {
 		if (!usedCategories.has(category)) {
 			pendingCategory = category;
+		}
+	}
+
+	function handleReroll() {
+		if (rerollsRemaining > 0) {
+			rerollsRemaining--;
+			// Relancer un pays SANS incrémenter currentStep
+			const countryList = rankings.map((r) => r.country as string);
+			currentCountry = getRandomCountry(countryList);
+			currentCountryFlag = countryFlags[currentCountry] || '🌍';
+			pendingCategory = null;
 		}
 	}
 
@@ -245,8 +258,16 @@
 						>
 							<div class="mb-3 text-6xl">{currentCountryFlag}</div>
 							<p class="text-2xl font-bold">{currentCountry}</p>
-						</button>
-					</div>
+						</button>					<div class="mt-4">
+						<Button 
+							variant="outline" 
+							size="sm" 
+							onclick={handleReroll}
+							disabled={rerollsRemaining === 0}
+						>
+							🔄 Relancer
+						</Button>
+					</div>					</div>
 				</div>
 
 				<!-- Categories Grid -->
