@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase/client';
-	import { getRandomCategories, getRandomCountry, calculateScore, checkWin } from '$lib/utils/gameLogic';
+	import { getRandomCategories, getRandomCountry, calculateScore, checkWin, getCategoryDisplayName } from '$lib/utils/gameLogic';
 	import Button from '$lib/components/ui/Button.svelte';
 	import type { Game, Ranking } from '$lib/supabase/types';
 	import { onMount } from 'svelte';
@@ -93,6 +93,7 @@
 			// Extraire les catégories (colonnes sauf 'id' et 'country')
 			if (rankings.length > 0) {
 				categories = Object.keys(rankings[0]).filter((key) => key !== 'id' && key !== 'country');
+				console.log('Catégories extraites de Supabase:', categories);
 				startNewGame();
 			}
 		}
@@ -196,7 +197,7 @@
 						{@const selection = selections[category]}
 						<div class="flex items-center justify-between rounded-lg p-4" style="background-color: hsl(var(--accent))">
 							<div>
-								<p class="font-bold">{category}</p>
+								<p class="font-bold">{getCategoryDisplayName(category)}</p>
 								<p class="text-sm" style="color: hsl(var(--muted-foreground))">Pays: {selection.country}</p>
 							</div>
 							<div class="text-right">
@@ -280,7 +281,7 @@
 							`}
 						>
 							<div class="text-center">
-								<p class="font-bold">{category}</p>
+								<p class="font-bold">{getCategoryDisplayName(category)}</p>
 								{#if pendingCategory === category}
 									<p class="mt-2 text-sm" style="color: hsl(var(--primary-foreground))">
 										{currentCountry} en attente de validation

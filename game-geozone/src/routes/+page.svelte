@@ -41,8 +41,8 @@
 	<div class="w-full max-w-md rounded-lg p-8 shadow-2xl" style="background-color: hsl(var(--card)); color: hsl(var(--card-foreground))">
 		<div class="mb-6 text-center">
 			<div class="mb-4 text-5xl">🌍</div>
-			<h1 class="text-3xl font-bold text-gray-800">GeoZone Game</h1>
-			<p class="mt-2 text-gray-600">Testez vos connaissances géographiques</p>
+			<h1 class="text-3xl font-bold text-white">GeoZone Game</h1>
+			<p class="mt-2 text-white">Testez vos connaissances géographiques</p>
 		</div>
 
 		{#if error}
@@ -80,7 +80,7 @@
 		<button
 			type="button"
 			onclick={() => (isSignUp = !isSignUp)}
-			class="mt-4 w-full text-center text-sm text-gray-600 hover:text-blue-600"
+			class="mt-4 w-full text-center text-sm text-white transition-colors hover:text-orange-500"
 		>
 			{isSignUp ? 'Déjà inscrit ? Se connecter' : 'Pas inscrit ? S\'inscrire'}
 		</button>

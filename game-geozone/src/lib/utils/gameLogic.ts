@@ -1,3 +1,33 @@
+// Mapping des noms de catégories en base vers l'affichage français
+export const categoryMapping: { [key: string]: string } = {
+	'alcohol': 'Taux d\'alcool',
+	'army': 'Taille de l\'armée',
+	'capital_city_numeric': 'Nombre d\'habitants de la capitale',
+	'capital_city_ratio': 'Ratio habitants capitale/pays',
+	'chinese_diaspora': 'Nombre de chinois',
+	'low_density': 'Faible densité',
+	'eez': 'Zone Économique Exclusive',
+	'fifa': 'Classement FIFA',
+	'homicide_rate': 'Taux d\'homicides',
+	'hdi': 'Indice de Développement Humain',
+	'individual_gdp': 'PIB par habitant',
+	'life_expectancy': 'Espérance de vie',
+	'obesity': 'Taux d\'obésité',
+	'olympics': 'Médailles olympiques',
+	'superficy_asc': 'Petite superficie',
+	'median_age': 'Âge médian',
+	'sovereignty': 'Obtention de la souveraineté',
+	'suicide_rate': 'Taux de suicide',
+	'forest': 'Part forêt/superficie'
+};
+
+/**
+ * Retourne le nom français d'une catégorie
+ */
+export function getCategoryDisplayName(categoryKey: string): string {
+	return categoryMapping[categoryKey] || categoryKey;
+}
+
 /**
  * Sélectionne 8 catégories aléatoires parmi toutes les disponibles
  */
