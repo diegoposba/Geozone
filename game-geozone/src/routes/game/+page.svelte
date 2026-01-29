@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase/client';
 	import { getRandomCategories, getRandomCountry, calculateScore, checkWin, getCategoryDisplayName } from '$lib/utils/gameLogic';
+	import { getCountryFlagUrl } from '$lib/utils/countryFlags';
 	import Button from '$lib/components/ui/Button.svelte';
 	import type { Game, Ranking } from '$lib/supabase/types';
 	import { onMount } from 'svelte';
@@ -22,24 +23,6 @@
 	// Drag & Drop
 	let draggedOverCategory: string | null = null;
 	let pendingCategory: string | null = null;
-
-	const countryFlags: { [key: string]: string } = {
-		'United States': '🇺🇸',
-		'United Kingdom': '🇬🇧',
-		'France': '🇫🇷',
-		'Germany': '🇩🇪',
-		'Spain': '🇪🇸',
-		'Italy': '🇮🇹',
-		'Canada': '🇨🇦',
-		'Australia': '🇦🇺',
-		'Japan': '🇯🇵',
-		'China': '🇨🇳',
-		'India': '🇮🇳',
-		'Brazil': '🇧🇷',
-		'Russia': '🇷🇺',
-		'South Korea': '🇰🇷',
-		'Mexico': '🇲🇽'
-	};
 
 	function handleDragStart(e: DragEvent) {
 		e.dataTransfer!.effectAllowed = 'copy';
@@ -124,7 +107,7 @@
 
 		const countryList = rankings.map((r) => r.country as string);
 		currentCountry = getRandomCountry(countryList);
-		currentCountryFlag = countryFlags[currentCountry] || '🌍';
+		currentCountryFlag = getCountryFlagUrl(currentCountry);
 		currentStep++;
 		pendingCategory = null;
 	}
@@ -141,7 +124,7 @@
 			// Relancer un pays SANS incrémenter currentStep
 			const countryList = rankings.map((r) => r.country as string);
 			currentCountry = getRandomCountry(countryList);
-			currentCountryFlag = countryFlags[currentCountry] || '🌍';
+			currentCountryFlag = getCountryFlagUrl(currentCountry);
 			pendingCategory = null;
 		}
 	}
@@ -256,7 +239,9 @@
 							class="inline-block cursor-move rounded-2xl p-8 transition-all duration-200 hover:shadow-lg active:opacity-75 disabled:cursor-move disabled:opacity-100"
 							style="background-color: hsl(var(--accent))"
 						>
-							<div class="mb-3 text-6xl">{currentCountryFlag}</div>
+							<div class="mb-3">
+								<img src={currentCountryFlag} alt={currentCountry} class="h-16 w-auto mx-auto rounded" />
+							</div>
 							<p class="text-2xl font-bold">{currentCountry}</p>
 						</button>					<div class="mt-4">
 						<Button 
