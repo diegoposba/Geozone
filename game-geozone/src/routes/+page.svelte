@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase/client';
+	import Button from '$lib/components/ui/Button.svelte';
 
 	let email = '';
 	let password = '';
@@ -25,8 +26,8 @@
 					password
 				});
 				if (signInError) throw signInError;
-				// Redirection vers le jeu
-				window.location.href = '/game';
+				// Redirection vers la page d'accueil
+				window.location.href = '/home';
 			}
 		} catch (err: any) {
 			error = err.message;
@@ -37,14 +38,20 @@
 </script>
 
 <div class="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600">
-	<div class="w-full max-w-md rounded-lg bg-white p-8 shadow-lg">
-		<h1 class="mb-6 text-center text-3xl font-bold text-gray-800">GeoZone Game</h1>
+	<div class="w-full max-w-md rounded-lg bg-white p-8 shadow-2xl">
+		<div class="mb-6 text-center">
+			<div class="mb-4 text-5xl">🌍</div>
+			<h1 class="text-3xl font-bold text-gray-800">GeoZone Game</h1>
+			<p class="mt-2 text-gray-600">Testez vos connaissances géographiques</p>
+		</div>
 
 		{#if error}
-			<div class="mb-4 rounded-lg bg-red-100 p-4 text-red-700">{error}</div>
+			<div class={`mb-4 rounded-lg p-4 ${error.includes('Inscription réussie') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+				{error}
+			</div>
 		{/if}
 
-		<form on:submit|preventDefault={handleAuth} class="space-y-4">
+		<form onsubmit={(e) => { e.preventDefault(); handleAuth(); }} class="space-y-4">
 			<input
 				type="email"
 				placeholder="Email"
@@ -61,17 +68,18 @@
 				class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
 			/>
 
-			<button
+			<Button
 				type="submit"
 				disabled={loading}
-				class="w-full rounded-lg bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-700 disabled:opacity-50"
+				class="w-full"
 			>
 				{loading ? 'Chargement...' : isSignUp ? 'S\'inscrire' : 'Se connecter'}
-			</button>
+			</Button>
 		</form>
 
 		<button
-			on:click={() => (isSignUp = !isSignUp)}
+			type="button"
+			onclick={() => (isSignUp = !isSignUp)}
 			class="mt-4 w-full text-center text-sm text-gray-600 hover:text-blue-600"
 		>
 			{isSignUp ? 'Déjà inscrit ? Se connecter' : 'Pas inscrit ? S\'inscrire'}
