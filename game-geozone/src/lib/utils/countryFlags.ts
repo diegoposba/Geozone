@@ -152,7 +152,7 @@ export const countryCodeMap: { [key: string]: string } = {
 	'Somalia': 'SO',
 	'Suriname': 'SR',
 	'South Sudan': 'SS',
-	'Sao Tome and Principe': 'ST',
+	'São Tomé and Príncipe': 'ST',
 	'El Salvador': 'SV',
 	'Syria': 'SY',
 	'Eswatini': 'SZ',
