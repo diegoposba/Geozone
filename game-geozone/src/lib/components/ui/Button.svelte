@@ -27,12 +27,12 @@
 	}: Props & { children: any } = $props();
 
 	const variants = {
-		default: 'bg-blue-600 text-white hover:bg-blue-700',
-		destructive: 'bg-red-600 text-white hover:bg-red-700',
-		outline: 'border border-gray-300 bg-white hover:bg-gray-100',
-		secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
-		ghost: 'hover:bg-gray-100',
-		link: 'text-blue-600 underline'
+		default: 'bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] hover:opacity-90',
+		destructive: 'bg-[hsl(var(--destructive))] text-[hsl(var(--destructive-foreground))] hover:opacity-90',
+		outline: 'border border-[hsl(var(--border))] bg-[hsl(var(--background))] hover:bg-[hsl(var(--accent))]',
+		secondary: 'bg-[hsl(var(--secondary))] text-[hsl(var(--secondary-foreground))] hover:opacity-90',
+		ghost: 'hover:bg-[hsl(var(--accent))]',
+		link: 'text-[hsl(var(--primary))] underline'
 	};
 
 	const sizes = {

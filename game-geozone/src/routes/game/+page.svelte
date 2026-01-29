@@ -171,37 +171,37 @@
 	}
 </script>
 
-<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+<div class="min-h-screen p-6" style="background-color: hsl(var(--background)); color: hsl(var(--foreground))">
 	<div class="mx-auto max-w-6xl">
 		{#if loading}
 			<div class="flex h-96 items-center justify-center">
 				<div class="text-center">
 					<div class="mb-4 text-4xl">⏳</div>
-					<p class="text-xl text-gray-600">Chargement du jeu...</p>
+					<p class="text-xl">Chargement du jeu...</p>
 				</div>
 			</div>
 		{:else if gameWon !== null}
 			<!-- Fin de partie -->
-			<div class="rounded-xl bg-white p-8 shadow-lg">
+			<div class="rounded-xl p-8 shadow-lg" style="background-color: hsl(var(--card)); color: hsl(var(--card-foreground))">
 				<div class="text-center">
 					<div class="mb-4 text-6xl">{gameWon ? '🎉' : '😅'}</div>
-					<h2 class="mb-2 text-4xl font-bold text-gray-800">
+					<h2 class="mb-2 text-4xl font-bold" style="color: hsl(var(--primary))">
 						{gameWon ? 'Vous avez gagné !' : 'Partie terminée'}
 					</h2>
-					<p class="mb-8 text-2xl font-bold text-blue-600">Score: {score}</p>
+					<p class="mb-8 text-2xl font-bold" style="color: hsl(var(--primary))">Score: {score}</p>
 				</div>
 
 				<div class="mb-8 space-y-3">
 					{#each selectedCategories as category}
 						{@const selection = selections[category]}
-						<div class="flex items-center justify-between rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 p-4">
+						<div class="flex items-center justify-between rounded-lg p-4" style="background-color: hsl(var(--accent))">
 							<div>
-								<p class="font-bold text-gray-800">{category}</p>
-								<p class="text-sm text-gray-600">Pays: {selection.country}</p>
+								<p class="font-bold">{category}</p>
+								<p class="text-sm" style="color: hsl(var(--muted-foreground))">Pays: {selection.country}</p>
 							</div>
 							<div class="text-right">
-								<div class="text-2xl font-bold text-blue-600">#{selection.ranking}</div>
-								<div class="text-xs text-gray-500">Classement</div>
+								<div class="text-2xl font-bold" style="color: hsl(var(--primary))">#{selection.ranking}</div>
+								<div class="text-xs" style="color: hsl(var(--muted-foreground))">Classement</div>
 							</div>
 						</div>
 					{/each}
@@ -215,34 +215,35 @@
 			<!-- Pendant la partie -->
 			<div class="space-y-6">
 				<!-- Progress & Country -->
-				<div class="rounded-xl bg-white p-6 shadow-lg">
+				<div class="rounded-xl p-6 shadow-lg" style="background-color: hsl(var(--card)); color: hsl(var(--card-foreground))">
 					<div class="mb-4 flex items-center justify-between">
 						<div>
-							<p class="text-sm text-gray-600">Manche {currentStep}/8</p>
-							<div class="mt-2 h-2 w-48 overflow-hidden rounded-full bg-gray-200">
+							<p class="text-sm" style="color: hsl(var(--muted-foreground))">Manche {currentStep}/8</p>
+							<div class="mt-2 h-2 w-48 overflow-hidden rounded-full" style="background-color: hsl(var(--border))">
 								<div
-									class="h-full bg-blue-600 transition-all duration-300"
-									style="width: {(currentStep / 8) * 100}%"
+									class="h-full transition-all duration-300"
+									style="background-color: hsl(var(--primary)); width: {(currentStep / 8) * 100}%"
 								></div>
 							</div>
 						</div>
 						<div class="text-right">
-							<p class="text-sm text-gray-600">Score actuel</p>
-							<p class="text-3xl font-bold text-blue-600">{score}</p>
+							<p class="text-sm" style="color: hsl(var(--muted-foreground))">Score actuel</p>
+							<p class="text-3xl font-bold" style="color: hsl(var(--primary))">{score}</p>
 						</div>
 					</div>
 
 					<div class="mt-6 text-center">
-						<p class="text-sm text-gray-600 mb-3">Glissez ce pays sur une catégorie</p>
+						<p class="text-sm mb-3" style="color: hsl(var(--muted-foreground))">Glissez ce pays sur une catégorie</p>
 						<button
 							draggable={true}
 							ondragstart={handleDragStart}
 							type="button"
 							disabled
-							class="inline-block cursor-move rounded-2xl bg-gradient-to-r from-blue-100 to-indigo-100 p-8 transition-all duration-200 hover:shadow-lg active:opacity-75 disabled:cursor-move disabled:opacity-100"
+							class="inline-block cursor-move rounded-2xl p-8 transition-all duration-200 hover:shadow-lg active:opacity-75 disabled:cursor-move disabled:opacity-100"
+							style="background-color: hsl(var(--accent))"
 						>
 							<div class="mb-3 text-6xl">{currentCountryFlag}</div>
-							<p class="text-2xl font-bold text-gray-800">{currentCountry}</p>
+							<p class="text-2xl font-bold">{currentCountry}</p>
 						</button>
 					</div>
 				</div>
@@ -265,18 +266,23 @@
 							onclick={() => handleCategoryClick(category)}
 							class={`relative rounded-xl p-6 transition-all duration-200 ${
 								usedCategories.has(category)
-									? 'cursor-not-allowed bg-gray-100 opacity-50'
+									? 'cursor-not-allowed opacity-50'
 									: draggedOverCategory === category
-										? 'bg-green-100 ring-4 ring-green-500 scale-105'
+										? 'ring-4 scale-105'
 										: pendingCategory === category
-											? 'bg-blue-200 ring-4 ring-blue-500'
-											: 'border-2 border-dashed border-gray-300 bg-white hover:border-blue-400 hover:bg-blue-50'
+											? 'ring-4'
+											: 'border-2 border-dashed'
 							}`}
+							style={`
+								background-color: ${usedCategories.has(category) ? 'hsl(var(--muted))' : draggedOverCategory === category ? 'hsl(var(--accent))' : pendingCategory === category ? 'hsl(var(--primary))' : 'hsl(var(--card))'};
+								border-color: ${draggedOverCategory === category ? 'hsl(var(--primary))' : pendingCategory === category ? 'hsl(var(--primary))' : 'hsl(var(--border))'};
+								color: ${pendingCategory === category ? 'hsl(var(--primary-foreground))' : 'hsl(var(--card-foreground))'};
+							`}
 						>
 							<div class="text-center">
-								<p class="font-bold text-gray-800">{category}</p>
+								<p class="font-bold">{category}</p>
 								{#if pendingCategory === category}
-									<p class="mt-2 text-sm text-gray-600">
+									<p class="mt-2 text-sm" style="color: hsl(var(--primary-foreground))">
 										{currentCountry} en attente de validation
 									</p>
 									<div class="mt-4 space-y-2">
@@ -294,15 +300,15 @@
 									</div>
 								{:else if usedCategories.has(category)}
 									<div class="mt-3">
-										<p class="text-sm text-gray-500">
+										<p class="text-sm" style="color: hsl(var(--muted-foreground))">
 											{selections[category].country}
 										</p>
-										<p class="mt-1 text-lg font-bold text-green-600">
+										<p class="mt-1 text-lg font-bold" style="color: hsl(var(--primary))">
 											#{selections[category].ranking}
 										</p>
 									</div>
 								{:else}
-									<p class="mt-2 text-sm text-gray-500">Glissez le pays ici</p>
+									<p class="mt-2 text-sm" style="color: hsl(var(--muted-foreground))">Glissez le pays ici</p>
 								{/if}
 							</div>
 						</div>

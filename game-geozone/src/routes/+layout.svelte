@@ -14,6 +14,13 @@
 		}
 	});
 
+	// Appliquer le mode dark par défaut
+	$effect(() => {
+		if (typeof document !== 'undefined') {
+			document.documentElement.classList.add('dark');
+		}
+	});
+
 	// Vérifier la session utilisateur
 	$effect(() => {
 		if (typeof window !== 'undefined') {

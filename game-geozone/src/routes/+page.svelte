@@ -37,8 +37,8 @@
 	}
 </script>
 
-<div class="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600">
-	<div class="w-full max-w-md rounded-lg bg-white p-8 shadow-2xl">
+<div class="flex min-h-screen items-center justify-center" style="background-color: hsl(var(--background))">
+	<div class="w-full max-w-md rounded-lg p-8 shadow-2xl" style="background-color: hsl(var(--card)); color: hsl(var(--card-foreground))">
 		<div class="mb-6 text-center">
 			<div class="mb-4 text-5xl">🌍</div>
 			<h1 class="text-3xl font-bold text-gray-800">GeoZone Game</h1>
