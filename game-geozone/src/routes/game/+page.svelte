@@ -168,7 +168,7 @@
 	}
 </script>
 
-<div class="min-h-screen p-6" style="background-color: hsl(var(--background)); color: hsl(var(--foreground))">
+<div class="pt-24 min-h-screen p-6" style="background-color: hsl(var(--background)); color: hsl(var(--foreground))">
 	<div class="mx-auto max-w-6xl">
 		{#if loading}
 			<div class="flex h-96 items-center justify-center">

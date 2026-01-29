@@ -37,7 +37,7 @@
 	}
 </script>
 
-<div class="flex min-h-screen items-center justify-center" style="background-color: hsl(var(--background))">
+<div class="flex min-h-screen items-center justify-center pt-24" style="background-color: hsl(var(--background))">
 	<div class="w-full max-w-md rounded-lg p-8 shadow-2xl" style="background-color: hsl(var(--card)); color: hsl(var(--card-foreground))">
 		<div class="mb-6 text-center">
 			<div class="mb-4 text-5xl">🌍</div>

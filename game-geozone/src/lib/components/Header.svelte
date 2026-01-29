@@ -16,8 +16,8 @@
 	}
 </script>
 
-<header class="border-b shadow-md" style="background-color: hsl(var(--card)); border-color: hsl(var(--border))">
-	<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 border shadow-md rounded-lg backdrop-blur-md" style="background-color: hsla(var(--card-hue), var(--card-sat), var(--card-light), 0.7); border-color: hsl(var(--border)); width: calc(100% - 2rem); max-width: 90rem; background: rgba(42, 48, 64, 0.7); border: 1px solid rgba(61, 67, 84, 0.5);">
+	<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 w-full">
 		<div class="flex items-center gap-8">
 			<a href="/" class="flex items-center gap-2 text-2xl font-bold" style="color: hsl(var(--primary))">
 				<span>🌍</span>

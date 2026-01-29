@@ -22,7 +22,7 @@
 </script>
 
 {#if !loading}
-	<div class="min-h-screen py-12 px-4" style="background-color: hsl(var(--background)); color: hsl(var(--foreground))">
+	<div class="pt-24 min-h-screen py-12 px-4" style="background-color: hsl(var(--background)); color: hsl(var(--foreground))">
 		<div class="mx-auto max-w-4xl">
 			<!-- Welcome Section -->
 			<div class="mb-12 text-center">
