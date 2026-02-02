@@ -104,7 +104,7 @@ export const countryCodeMap: { [key: string]: string } = {
 	'Madagascar': 'MG',
 	'Maldives': 'MV',
 	'Marshall Islands': 'MH',
-	'Macedonia': 'MK',
+	'North Macedonia': 'MK',
 	'Mali': 'ML',
 	'Malta': 'MT',
 	'Myanmar': 'MM',
