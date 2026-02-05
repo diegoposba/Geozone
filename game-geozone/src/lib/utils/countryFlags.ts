@@ -160,7 +160,7 @@ export const countryCodeMap: { [key: string]: string } = {
 	'Togo': 'TG',
 	'Thailand': 'TH',
 	'Tajikistan': 'TJ',
-	'Timor-Leste': 'TL',
+	'East Timor': 'TL',
 	'Turkmenistan': 'TM',
 	'Tunisia': 'TN',
 	'Tonga': 'TO',

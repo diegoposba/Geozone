@@ -2,4 +2,4 @@
 
 En cours de développement
 
-idées: Liberté de la presse, démocratie (ou autoritarisme)
+idées: Liberté de la presse, démocratie (ou autoritarisme), egalités des genres, education, emission de CO2
