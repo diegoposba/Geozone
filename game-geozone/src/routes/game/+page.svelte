@@ -263,9 +263,6 @@
 					<div class="text-center lg:text-right">
 						<p class="text-xs sm:text-sm" style="color: hsl(var(--muted-foreground))">Score</p>
 						<p class="text-xl sm:text-2xl font-bold" style="color: hsl(var(--primary))">{score}</p>
-						<p class="text-xs" style="color: hsl(var(--muted-foreground))">
-							Best: {theoreticalBestScore}
-						</p>
 					</div>
 				</div>
 
