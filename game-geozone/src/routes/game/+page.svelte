@@ -262,7 +262,7 @@
 					<!-- Score -->
 					<div class="text-center lg:text-right">
 						<p class="text-xs sm:text-sm" style="color: hsl(var(--muted-foreground))">Score</p>
-						<p class="text-xl sm:text-2xl font-bold" style="color: hsl(var(--primary))">{score}</p>
+						<p class="text-xl sm:text-2xl font-bold" style="color: {score > 200 ? 'hsl(0, 70%, 50%)' : 'hsl(var(--primary))'}">{score}</p>
 					</div>
 				</div>
 
