@@ -8,11 +8,7 @@
 
 	onMount(async () => {
 		const { data, error } = await supabase.auth.getSession();
-		if (error || !data.session) {
-			window.location.href = '/';
-			return;
-		}
-		user = data.session.user;
+		user = data?.session?.user || null;
 		loading = false;
 	});
 

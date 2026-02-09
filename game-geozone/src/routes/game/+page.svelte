@@ -1,21 +1,26 @@
 <script lang="ts">
 	import { supabase } from '$lib/supabase/client';
-	import { getRandomCategories, getRandomCountry, calculateScore, checkWin, getCategoryDisplayName } from '$lib/utils/gameLogic';
+	import { getRandomCategories, getRandomCountry, calculateScore, checkWin, getCategoryDisplayName, calculateTheoreticalBest } from '$lib/utils/gameLogic';
 	import { getCountryFlagUrl } from '$lib/utils/countryFlags';
 	import Button from '$lib/components/ui/Button.svelte';
 	import type { Game, Ranking } from '$lib/supabase/types';
 	import { onMount } from 'svelte';
+	import RefreshCcw from 'lucide-svelte/icons/refresh-ccw';
+	import Info from 'lucide-svelte/icons/info';
+	import CircleCheck from 'lucide-svelte/icons/circle-check';
 
 	let user: any;
 	let rankings: Ranking[] = [];
 	let categories: string[] = [];
 	let selectedCategories: string[] = [];
 	let usedCategories: Set<string> = new Set();
+	let usedCountries: Set<string> = new Set();
 	let currentCountry: string = '';
 	let currentCountryFlag: string = '';
 	let currentStep: number = 0;
 	let selections: { [category: string]: { country: string; ranking: number } } = {};
 	let score: number = 0;
+	let theoreticalBestScore: number = 0;
 	let gameWon: boolean | null = null;
 	let loading: boolean = true;
 	let rerollsRemaining: number = 3;
@@ -57,13 +62,9 @@
 	}
 
 	onMount(async () => {
-		// Vérifier l'utilisateur
+		// Vérifier l'utilisateur (permettre l'accès invité)
 		const { data, error } = await supabase.auth.getSession();
-		if (error || !data.session) {
-			window.location.href = '/';
-			return;
-		}
-		user = data.session.user;
+		user = data?.session?.user || null;
 
 		// Charger les rankings
 		const { data: rankingsData, error: rankingsError } = await supabase
@@ -88,9 +89,11 @@
 	function startNewGame() {
 		selectedCategories = getRandomCategories(categories, 8);
 		usedCategories.clear();
+		usedCountries.clear();
 		selections = {};
 		currentStep = 0;
 		score = 0;
+		theoreticalBestScore = calculateTheoreticalBest(selectedCategories, rankings);
 		gameWon = null;
 		rerollsRemaining = 3;
 		draggedOverCategory = null;
@@ -106,7 +109,7 @@
 		}
 
 		const countryList = rankings.map((r) => r.country as string);
-		currentCountry = getRandomCountry(countryList);
+		currentCountry = getRandomCountry(countryList, usedCountries);
 		currentCountryFlag = getCountryFlagUrl(currentCountry);
 		currentStep++;
 		pendingCategory = null;
@@ -123,7 +126,7 @@
 			rerollsRemaining--;
 			// Relancer un pays SANS incrémenter currentStep
 			const countryList = rankings.map((r) => r.country as string);
-			currentCountry = getRandomCountry(countryList);
+			currentCountry = getRandomCountry(countryList, usedCountries);
 			currentCountryFlag = getCountryFlagUrl(currentCountry);
 			pendingCategory = null;
 		}
@@ -139,6 +142,7 @@
 				ranking: ranking[pendingCategory] as number
 			};
 			usedCategories.add(pendingCategory);
+			usedCountries.add(currentCountry);
 			score = calculateScore(selections);
 
 			if (usedCategories.size < 8) {
@@ -152,23 +156,26 @@
 	async function endGame() {
 		gameWon = checkWin(score);
 
-		// Sauvegarder la partie
-		const { error } = await supabase.from('games').insert({
-			user_id: user.id,
-			score,
-			categories_used: selectedCategories,
-			country_selections: selections,
-			completed_at: new Date().toISOString(),
-			won: gameWon
-		});
+		// Sauvegarder la partie uniquement si l'utilisateur est authentifié
+		if (user && user.id) {
+			const { error } = await supabase.from('games').insert({
+				user_id: user.id,
+				score,
+				categories_used: selectedCategories,
+				country_selections: selections,
+				completed_at: new Date().toISOString(),
+				won: gameWon
+			});
 
-		if (error) {
-			console.error(error);
+			if (error) {
+				console.error(error);
+			}
 		}
+		// Les invités ne sauvegardent pas leurs parties
 	}
 </script>
 
-<div class="pt-24 min-h-screen p-6" style="background-color: hsl(var(--background)); color: hsl(var(--foreground))">
+<div class="pt-24 sm:pt-28 min-h-screen p-3 sm:p-6" style="background-color: hsl(var(--background)); color: hsl(var(--foreground))">
 	<div class="mx-auto max-w-6xl">
 		{#if loading}
 			<div class="flex h-96 items-center justify-center">
@@ -210,53 +217,60 @@
 			</div>
 		{:else if currentStep > 0 && currentStep <= 8}
 			<!-- Pendant la partie -->
-			<div class="space-y-6">
-				<!-- Progress & Country -->
-				<div class="rounded-xl p-6 shadow-lg" style="background-color: hsl(var(--card)); color: hsl(var(--card-foreground))">
-					<div class="mb-4 flex items-center justify-between">
-						<div>
-							<p class="text-sm" style="color: hsl(var(--muted-foreground))">Manche {currentStep}/8</p>
-							<div class="mt-2 h-2 w-48 overflow-hidden rounded-full" style="background-color: hsl(var(--border))">
-								<div
-									class="h-full transition-all duration-300"
-									style="background-color: hsl(var(--primary)); width: {(currentStep / 8) * 100}%"
-								></div>
-							</div>
+			<div class="rounded-2xl border-2 sm:border-4 border-white p-4 sm:p-8 shadow-2xl" style="background-color: hsl(var(--card)); color: hsl(var(--card-foreground))">
+				<!-- Top bar -->
+				<div class="mb-6 flex flex-col lg:flex-row items-center justify-between gap-4">
+					<!-- Pays: X/8 -->
+					<div class="text-base sm:text-lg font-bold">
+						Pays: {currentStep}/8
+					</div>
+
+					<!-- Carte pays centrée + Reroll -->
+					<div class="flex flex-col items-center w-full lg:w-auto">
+						<div class="flex items-center gap-2">
+							<button
+								draggable={true}
+								ondragstart={handleDragStart}
+								type="button"
+								disabled
+								class="rounded-xl border-2 px-3 py-2 sm:px-4 sm:py-3 shadow-lg cursor-move disabled:cursor-move"
+								style="background-color: hsl(var(--accent)); border-color: hsl(var(--primary))"
+							>
+								<div class="flex items-center justify-center gap-3">
+									<img src={currentCountryFlag} alt={currentCountry} class="h-8 sm:h-10 w-auto rounded" />
+									<p class="text-lg sm:text-xl font-bold">{currentCountry}</p>
+								</div>
+							</button>
+							<Button
+								size="sm"
+								onclick={handleReroll}
+								disabled={rerollsRemaining === 0}
+							>
+								<RefreshCcw /> 
+							</Button>
 						</div>
-						<div class="text-right">
-							<p class="text-sm" style="color: hsl(var(--muted-foreground))">Score actuel</p>
-							<p class="text-3xl font-bold" style="color: hsl(var(--primary))">{score}</p>
+
+						<!-- Barre de progression sous le pays -->
+						<div class="mt-4 w-full max-w-xs sm:w-64 h-2 overflow-hidden rounded-full" style="background-color: hsl(var(--border))">
+							<div
+								class="h-full transition-all duration-300"
+								style="background-color: hsl(var(--primary)); width: {(currentStep / 8) * 100}%"
+							></div>
 						</div>
 					</div>
 
-					<div class="mt-6 text-center">
-						<p class="text-sm mb-3" style="color: hsl(var(--muted-foreground))">Glissez ce pays sur une catégorie</p>
-						<button
-							draggable={true}
-							ondragstart={handleDragStart}
-							type="button"
-							disabled
-							class="inline-block cursor-move rounded-2xl p-8 transition-all duration-200 hover:shadow-lg active:opacity-75 disabled:cursor-move disabled:opacity-100"
-							style="background-color: hsl(var(--accent))"
-						>
-							<div class="mb-3">
-								<img src={currentCountryFlag} alt={currentCountry} class="h-16 w-auto mx-auto rounded" />
-							</div>
-							<p class="text-2xl font-bold">{currentCountry}</p>
-						</button>					<div class="mt-4">
-						<Button 
-							variant="outline" 
-							size="sm" 
-							onclick={handleReroll}
-							disabled={rerollsRemaining === 0}
-						>
-							🔄 Relancer
-						</Button>
-					</div>					</div>
+					<!-- Score -->
+					<div class="text-center lg:text-right">
+						<p class="text-xs sm:text-sm" style="color: hsl(var(--muted-foreground))">Score</p>
+						<p class="text-xl sm:text-2xl font-bold" style="color: hsl(var(--primary))">{score}</p>
+						<p class="text-xs" style="color: hsl(var(--muted-foreground))">
+							Best: {theoreticalBestScore}
+						</p>
+					</div>
 				</div>
 
-				<!-- Categories Grid -->
-				<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+				<!-- Grille 4×2 : 1 colonne mobile, 2 colonnes desktop -->
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
 					{#each selectedCategories as category}
 						<div
 							role="button"
@@ -271,7 +285,7 @@
 								}
 							}}
 							onclick={() => handleCategoryClick(category)}
-							class={`relative rounded-xl p-6 transition-all duration-200 ${
+							class={`relative rounded-xl p-4 transition-all duration-200 flex items-center gap-3 ${
 								usedCategories.has(category)
 									? 'cursor-not-allowed opacity-50'
 									: draggedOverCategory === category
@@ -286,38 +300,37 @@
 								color: ${pendingCategory === category ? 'hsl(var(--primary-foreground))' : 'hsl(var(--card-foreground))'};
 							`}
 						>
-							<div class="text-center">
-								<p class="font-bold">{getCategoryDisplayName(category)}</p>
+							<!-- Icône info (gauche) -->
+							<Info size={16} />
+
+							<!-- Contenu central -->
+							<div class="flex-1 flex items-center gap-2 flex-wrap">
+								<p class="font-bold text-sm">{getCategoryDisplayName(category)}</p>
 								{#if pendingCategory === category}
-									<p class="mt-2 text-sm" style="color: hsl(var(--primary-foreground))">
-										{currentCountry} en attente de validation
-									</p>
-									<div class="mt-4 space-y-2">
-										<Button variant="default" size="sm" onclick={confirmPlacement} class="w-full">
-											✓ OK
-										</Button>
-										<Button
-											variant="outline"
-											size="sm"
-											onclick={() => (pendingCategory = null)}
-											class="w-full"
-										>
-											✕ Annuler
-										</Button>
-									</div>
+									<img src={currentCountryFlag} alt={currentCountry} class="h-5 w-auto rounded" />
+									<p class="text-xs" style="color: hsl(var(--primary-foreground))">{currentCountry}</p>
+									<button
+										class="px-2 py-1 text-xs rounded ml-auto"
+										style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground))"
+										onclick={confirmPlacement}
+									>
+										<CircleCheck />
+									</button>
 								{:else if usedCategories.has(category)}
-									<div class="mt-3">
-										<p class="text-sm" style="color: hsl(var(--muted-foreground))">
-											{selections[category].country}
-										</p>
-										<p class="mt-1 text-lg font-bold" style="color: hsl(var(--primary))">
-											#{selections[category].ranking}
-										</p>
-									</div>
+									<img src={getCountryFlagUrl(selections[category].country)} alt={selections[category].country} class="h-5 w-auto rounded" />
+									<p class="text-xs" style="color: hsl(var(--muted-foreground))">{selections[category].country}</p>
+									<p class="text-sm font-bold ml-auto" style="color: hsl(var(--primary))">
+										#{selections[category].ranking}
+									</p>
 								{:else}
-									<p class="mt-2 text-sm" style="color: hsl(var(--muted-foreground))">Glissez le pays ici</p>
+									<p class="text-xs" style="color: hsl(var(--muted-foreground))">— Clique ou Drop</p>
 								{/if}
 							</div>
+
+							<!-- Checkmark (droite) si rempli -->
+							{#if usedCategories.has(category)}
+								<div class="text-xl" style="color: #22c55e">✓</div>
+							{/if}
 						</div>
 					{/each}
 				</div>

@@ -33,7 +33,7 @@
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
-{#if user && !isOnAuthPage}
+{#if !isOnAuthPage}
 	<Header />
 {/if}
 

@@ -38,9 +38,23 @@ export function getRandomCategories(allCategories: string[], count: number = 8):
 
 /**
  * Sélectionne un pays aléatoire parmi une liste
+ * @param countries Liste de tous les pays disponibles
+ * @param excludeCountries Ensemble de pays à exclure (optionnel)
  */
-export function getRandomCountry(countries: string[]): string {
-	return countries[Math.floor(Math.random() * countries.length)];
+export function getRandomCountry(countries: string[], excludeCountries?: Set<string>): string {
+	let availableCountries = countries;
+
+	// Filtrer les pays déjà utilisés
+	if (excludeCountries && excludeCountries.size > 0) {
+		availableCountries = countries.filter(c => !excludeCountries.has(c));
+	}
+
+	// Fallback si tous les pays sont utilisés (ne devrait pas arriver avec 192 pays et 8 tours)
+	if (availableCountries.length === 0) {
+		availableCountries = countries;
+	}
+
+	return availableCountries[Math.floor(Math.random() * availableCountries.length)];
 }
 
 /**
@@ -57,4 +71,31 @@ export function calculateScore(selections: {
  */
 export function checkWin(score: number): boolean {
 	return score < 200;
+}
+
+/**
+ * Calcule le meilleur score théorique possible pour les catégories sélectionnées
+ * Le meilleur score = somme des rankings minimum pour chaque catégorie
+ */
+export function calculateTheoreticalBest(
+	selectedCategories: string[],
+	rankings: { country: string; [category: string]: string | number }[]
+): number {
+	let bestScore = 0;
+
+	for (const category of selectedCategories) {
+		let minRanking = Infinity;
+
+		for (const ranking of rankings) {
+			const value = ranking[category];
+			if (typeof value === 'number' && value > 0) {
+				minRanking = Math.min(minRanking, value);
+			}
+		}
+
+		// Ajouter au meilleur score (si aucun ranking valide trouvé, utiliser 1 comme meilleur cas)
+		bestScore += minRanking === Infinity ? 1 : minRanking;
+	}
+
+	return bestScore;
 }
