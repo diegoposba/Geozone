@@ -217,7 +217,7 @@
 			</div>
 		{:else if currentStep > 0 && currentStep <= 8}
 			<!-- Pendant la partie -->
-			<div class="rounded-2xl border-2 sm:border-4 border-white p-4 sm:p-8 shadow-2xl" style="background-color: hsl(var(--card)); color: hsl(var(--card-foreground))">
+			<div class="rounded-2xl p-4 sm:p-8 shadow-2xl backdrop-blur-md" style="background: rgba(42, 48, 64, 0.7); border: 1px solid rgba(61, 67, 84, 0.5); color: hsl(var(--card-foreground))">
 				<!-- Top bar -->
 				<div class="mb-6 flex flex-col lg:flex-row items-center justify-between gap-4">
 					<!-- Pays: X/8 -->
